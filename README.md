@@ -12,7 +12,7 @@
 
 ### Packaged Extension (.vsix)
 
-Download the latest `vscode-opn.vsix` from [GitHub Releases](../../release) 
+Download the latest `vscode-opn.vsix` from [GitHub Releases](../../releases) 
 
 You can manually install the VS Code extension packaged in a .vsix file. 
 
