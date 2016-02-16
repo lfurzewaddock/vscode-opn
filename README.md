@@ -12,7 +12,7 @@
 
 ### Packaged Extension (.vsix)
 
-Download the latest `vscode-opn.vsix` from [GitHub Releases](release) 
+Download the latest `vscode-opn.vsix` from [GitHub Releases](../../release) 
 
 You can manually install the VS Code extension packaged in a .vsix file. 
 
@@ -51,7 +51,7 @@ The extension will be installed under your user .vscode/extensions folder.
 Execute the extension with the keyboard shortcut;
 
 - **Mac**: <kbd>Command</kbd> + <kbd>Alt</kbd> + <kbd>O</kbd>
-- **Windows/Linux**: <kbd>Command</kbd> + <kbd>Alt</kbd> + <kbd>O</kbd>
+- **Windows/Linux**: <kbd>Control</kbd> + <kbd>Alt</kbd> + <kbd>O</kbd>
 
 
 ## Tested
@@ -76,7 +76,7 @@ Execute the extension with the keyboard shortcut;
    
 ## Contributions
 
-- Please use [Github Issues](issues), for feedback, feature suggestions, comments and reporting bugs.
+- Please use [Github Issues](../../issues), for feedback, feature suggestions, comments and reporting bugs.
 - Feel free to fork this project and create pull requests with new features and/or bug fixes
 - Help with bugs/issues specific to other platforms such as OSX and Linux is particularly welcome
 
