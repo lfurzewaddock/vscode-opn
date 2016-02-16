@@ -82,4 +82,3 @@ Execute the extension with the keyboard shortcut;
 
 ## License
 [MIT](LICENSE.txt)
-
