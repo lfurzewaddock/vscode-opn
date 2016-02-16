@@ -3,3 +3,4 @@ test/
 vsc-extension-quickstart.md
 *.log
 *.psd
+*.vsix
