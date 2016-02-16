@@ -2,7 +2,9 @@
 
 ![vscode-opn](vscode-opn.png)
 
-> Opens files in the default application for the file type set in the OS
+> Microsoft Visual Studio Code extension integrating opn.
+ 
+> Opens files in the default application for the file type set in the OS.
 
 ## Dependencies
 
