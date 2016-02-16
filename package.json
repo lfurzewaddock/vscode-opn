@@ -1,0 +1,43 @@
+{
+  "name": "vscode-opn",
+  "displayName": "vscode-opn",
+  "description": "Opens files in the default application for the file type set in the OS",
+  "version": "1.0.0",
+  "publisher": "lfurzewaddock",
+  "engines": {
+    "vscode": "^0.10.6"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.opn",
+        "title": "Open"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.opn",
+        "key": "ctrl+alt+o",
+        "mac": "cmd+alt+o"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "dependencies": {
+    "opn": "^4.0.0"
+  },
+  "devDependencies": {
+    "jscs": "^2.10.1",
+    "jshint": "^2.9.1",
+    "vscode": "^0.11.0"
+  }
+}
