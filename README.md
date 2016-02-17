@@ -2,9 +2,9 @@
 
 ![vscode-opn](vscode-opn.png)
 
-> Microsoft Visual Studio Code extension integrating opn.
+> Microsoft Visual Studio Code extension integrating node.js module: opn
  
-> Opens files in the default application for the file type set in the OS.
+> Opens files in the default application for the file type set in the OS
 
 ## Dependencies
 
@@ -12,9 +12,23 @@
 
 ## Install
 
-### Packaged Extension (.vsix)
+### Easiest from the Extension Gallery
 
-Download the latest `vscode-opn.vsix` from [GitHub Releases](../../releases) 
+1. Start VS Code.
+
+2. From within VS Code press `F1`, then type `ext install`.
+
+3. Select `Extensions: Install Extension` and click or press `Enter`.
+
+4. Wait a few seconds for the list to populate and type `Open File in App`.
+
+5. Click the install icon next to the `Open File in App` extension.
+
+6. Restart VS Code to complete installing the extension.
+
+### Alternatively, with the Packaged Extension (.vsix) file
+
+Download the latest `vscode-opn.vsix` from [GitHub Releases](../../releases). 
 
 You can manually install the VS Code extension packaged in a .vsix file. 
 
@@ -24,11 +38,11 @@ Execute the VS Code command line below providing the path to the .vsix file;
 
     code myExtensionFolder\vscode-opn.vsix  
 
-Depending on your platform `myExtensionFolder` is located:
+Depending on your platform replace `myExtensionFolder\` with;
 
-- Windows:- `%USERPROFILE%\.vscode\extensions`
-- Mac:- `$HOME/.vscode/extensions`
-- Linux:- `$HOME/.vscode/extensions`
+- Windows:- `%USERPROFILE%\.vscode\extensions\`
+- Mac:- `$HOME/.vscode/extensions/`
+- Linux:- `$HOME/.vscode/extensions/`
 
 Option 2)
 
@@ -38,22 +52,12 @@ From within VS Code open the 'File' menu, select 'Open File...' or press Ctrl+O,
 
 The extension will be installed under your user .vscode/extensions folder.
 
-<!--
-1. Press <kbd>F1</kbd>, then type `ext install`
-
-2. Select `Extensions: Install Extension` and click or press <kbd>Enter</kbd>
-
-3. Wait a few seconds for the list to download and type `vscode-opn`
-
-4. Click the install icon next to the `vscode-opn` extension in the list
--->
-
 ## Usage
 
 Execute the extension with the keyboard shortcut;
 
-- **Mac**: <kbd>Command</kbd> + <kbd>Alt</kbd> + <kbd>O</kbd>
-- **Windows/Linux**: <kbd>Control</kbd> + <kbd>Alt</kbd> + <kbd>O</kbd>
+- **Mac**: `Command` + `Alt` + `O`
+- **Windows/Linux**: `Ctrl` + `Alt` + `O`
 
 
 ## Tested
@@ -79,8 +83,8 @@ Execute the extension with the keyboard shortcut;
 ## Contributions
 
 - Please use [Github Issues](../../issues), for feedback, feature suggestions, comments and reporting bugs.
-- Feel free to fork this project and create pull requests with new features and/or bug fixes
-- Help with bugs/issues specific to other platforms such as OSX and Linux is particularly welcome
+- Feel free to fork this project and create pull requests with new features and/or bug fixes.
+- Help with bugs/issues specific to other platforms such as OSX and Linux is particularly welcome.
 
 ## License
 [MIT](LICENSE.txt)

@@ -1,17 +1,32 @@
 {
   "name": "vscode-opn",
-  "displayName": "vscode-opn: Open files in your default application",
-  "description": "Integrates opn to open files in the default application for the file type set in the OS",
-  "version": "1.0.0",
+  "displayName": "Open File in App",
+  "description": "Integrates node.js module 'opn' to open files in the default application for the file type set in the OS",
+  "version": "1.0.2",
   "publisher": "lfurzewaddock",
   "icon": "vscode-opn.png",
   "galleryBanner": {
-        "color": "#A88037",
-        "theme": "dark"
-    },
+    "color": "#A88037",
+    "theme": "dark"
+  },
+  "keywords": [
+    "open", 
+    "launch", 
+    "file",
+    "program", 
+    "app", 
+    "application", 
+    "default", 
+    "html", 
+    "htm", 
+    "txt", 
+    "json", 
+    "xml", 
+    "log"
+  ],
   "bugs": {
-        "url": "https://github.com/lfurzewaddock/vscode-opn/issues"
-    },
+    "url": "https://github.com/lfurzewaddock/vscode-opn/issues"
+  },
   "homepage": "https://github.com/lfurzewaddock/vscode-opn/blob/master/README.md",
   "repository": {
     "type": "git",
