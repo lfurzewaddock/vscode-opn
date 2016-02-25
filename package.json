@@ -1,27 +1,27 @@
 {
   "name": "vscode-opn",
   "displayName": "Open File in App",
-  "description": "Integrates node.js module 'opn' to open files in the default application for the file type set in the OS",
-  "version": "1.0.2",
+  "description": "Integrates node.js module 'opn' to open files directly by default, or on your local web server using the default app set by the OS, or an app set by you. \n\n Great for rapid prototyping!",
+  "version": "1.1.2",
   "publisher": "lfurzewaddock",
-  "icon": "vscode-opn.png",
+  "icon": "public/assets/vscode-opn.png",
   "galleryBanner": {
     "color": "#A88037",
     "theme": "dark"
   },
   "keywords": [
-    "open", 
-    "launch", 
+    "open",
+    "launch",
     "file",
-    "program", 
-    "app", 
-    "application", 
-    "default", 
-    "html", 
-    "htm", 
-    "txt", 
-    "json", 
-    "xml", 
+    "program",
+    "app",
+    "application",
+    "default",
+    "html",
+    "htm",
+    "txt",
+    "json",
+    "xml",
     "log"
   ],
   "bugs": {
@@ -55,7 +55,33 @@
         "key": "ctrl+alt+o",
         "mac": "cmd+alt+o"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "vscode-opn configuration",
+      "properties": {
+        "vscode-opn.perLang": {
+          "type": "object",
+          "default": {},
+          "description": "vscode-opn 'opnOptions' array of objects to provide args to the opn command for each language"
+        },
+        "vscode-opn.webServerProtocol": {
+          "type": "string",
+          "default": "http",
+          "description": "Enter a protocol, e.g. 'http' or 'https'"
+        },
+        "vscode-opn.webServerHostname": {
+          "type": "string",
+          "default": "localhost",
+          "description": "Enter the hostname or IP of your local web server"
+        },
+        "vscode-opn.webServerPort": {
+          "type": "integer",
+          "default": 8080,
+          "description": "Enter the port of your local web server"
+        }
+      }
+    }
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install"
@@ -64,6 +90,7 @@
     "opn": "^4.0.0"
   },
   "devDependencies": {
+    "decache": "^3.0.3",
     "jscs": "^2.10.1",
     "jshint": "^2.9.1",
     "vscode": "^0.11.0"

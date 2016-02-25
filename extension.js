@@ -1,44 +1,72 @@
 'use strict';
 
 var vscode = require('vscode');
-var opn = require('opn');
+var fileService = require('./libs/fileService');
 
 var openController = (function openControllerIIFE() {
 
-  var subscriptions = [];
-  var editor = null;
+  var openFileWithOptions = function openFileWithOptionsAnonFn(activeTextEditor) {
 
-  var openUri = function openUriAnonFn() {
+    var config = vscode.workspace.getConfiguration('vscode-opn');
 
-    editor = vscode.window.activeTextEditor;
-    if (!editor || !editor.document.uri) {
-      vscode.window.showInformationMessage('No active editor or URI available');
+    if (config !== undefined && typeof config.perLang === 'object' && Object.keys(config.perLang).length > 0) {
 
-      return;
-    }
+      for (var i = 0, len = config.perLang.opnOptions.length; i < len; i++) {
 
-    // Bug workaround: https://github.com/Microsoft/vscode/issues/2990
-    if (editor.document.uri.scheme.toString() === 'file') {
-      opn('file://' + editor.document.uri.path.toString());
+        var opnOptionObj = config.perLang.opnOptions[i];
+
+        if (activeTextEditor.document.languageId === opnOptionObj.forLang) {
+
+          fileService.openFileLocation(fileService.getFileLocation(activeTextEditor, config, opnOptionObj), opnOptionObj);
+          break;
+
+        }
+
+      }
+
     } else {
-      opn(editor.document.uri.toString());
+
+      fileService.openFileLocation(fileService.getFileLocation(activeTextEditor));
     }
+
+  };
+
+  var openFile = function openUriAnonFn() {
+
+    var editor = vscode.window.activeTextEditor;
+
+    if (!editor || !editor.document.uri) {
+
+      vscode.window.showInformationMessage('No active editor or URI available');
+      return;
+
+    }
+
+    openFileWithOptions(editor);
+
   };
 
   var disposable = vscode.commands.registerCommand('extension.opn', function openUriAnonFn() {
 
     try {
-      openUri();
+
+      openFile();
+
     }
     catch (error) {
+
       vscode.window.showInformationMessage('Error! Could not open file.');
       console.error(error.stack);
+
     }
+
   });
 
   var executeOpen = function executeOpenAnonFn() {
 
+    var subscriptions = [];
     subscriptions.push(disposable);
+
   };
 
   return {
@@ -56,6 +84,8 @@ function activate(context) {
 exports.activate = activate;
 
 function deactivate() {
+
 }
 
 exports.deactivate = deactivate;
+

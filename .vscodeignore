@@ -6,4 +6,4 @@ typings/**
 .gitignore
 jsconfig.json
 vsc-extension-quickstart.md
-*.psd
+public/assets/images/*.psd

@@ -1,4 +1,15 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+  // Controls the rendering size of tabs in characters. Accepted values: "auto", 2, 4, 6, etc. If set to "auto", the value will be guessed when a file is opened.
+  "editor.tabSize": 2,
+  
+  // Run linter checks for JavaScript files - overrides validate.lint.* settings.
+  "javascript.validate.semanticValidation": false,
+   
+   // Control whether jshint is enabled for JavaScript files or not.
+  "jshint.enable": true,
+  
+  // Enable or disable the JSCS Linter for JavaScript files.
+  "jscs.enable": true
 
 }

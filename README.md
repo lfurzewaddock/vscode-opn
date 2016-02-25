@@ -1,6 +1,6 @@
 # vscode-opn
 
-![vscode-opn](vscode-opn.png)
+![vscode-opn](public/assets/vscode-opn.png)
 
 > Microsoft Visual Studio Code extension integrating node.js module: opn
  
