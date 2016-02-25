@@ -4,7 +4,7 @@
   "description": "Integrates node.js module 'opn' to open files directly by default, or on your local web server using the default app set by the OS, or an app set by you. \n\n Great for rapid prototyping!",
   "version": "1.1.2",
   "publisher": "lfurzewaddock",
-  "icon": "public/assets/vscode-opn.png",
+  "icon": "public/assets/images/vscode-opn.png",
   "galleryBanner": {
     "color": "#A88037",
     "theme": "dark"

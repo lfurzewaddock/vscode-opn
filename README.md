@@ -1,14 +1,12 @@
 # vscode-opn
 
-![vscode-opn](public/assets/vscode-opn.png)
+![vscode-opn](public/assets/images/vscode-opn.png)
 
 > Microsoft Visual Studio Code extension integrating node.js module: opn
  
-> Opens files in the default application for the file type set in the OS
+> Opens files directly by default, or on your local web server using the default app set by the OS, or an app set by you.
 
-## Dependencies
-
-- [opn](https://github.com/sindresorhus/opn)
+> Great for rapid prototyping!
 
 ## Install
 
@@ -59,6 +57,32 @@ Execute the extension with the keyboard shortcut;
 - **Mac**: `Command` + `Alt` + `O`
 - **Windows/Linux**: `Ctrl` + `Alt` + `O`
 
+```javascript
+"vscode-opn.perLang": {
+    "opnOptions": [
+      {
+        "forLang": "html",
+        "openInApp": "chrome",
+        "openInAppArgs": ["--incognito"],
+        "isUseWebServer": true,
+        "isUseFsPath": false,
+        "isWaitForAppExit": true
+      },
+      {
+        "forLang": "plaintext",
+        "openInApp": "notepad++",
+        "openInAppArgs": [],
+        "isUseWebServer": false,
+        "isUseFsPath": true,
+        "isWaitForAppExit": true
+      }
+    ]
+  },
+  "vscode-opn.webServerProtocol": "http",
+  "vscode-opn.webServerHostname": "localhost",
+  "vscode-opn.webServerPort": 8080
+```
+
 
 ## Tested
 
@@ -85,6 +109,10 @@ Execute the extension with the keyboard shortcut;
 - Please use [Github Issues](../../issues), for feedback, feature suggestions, comments and reporting bugs.
 - Feel free to fork this project and create pull requests with new features and/or bug fixes.
 - Help with bugs/issues specific to other platforms such as OSX and Linux is particularly welcome.
+
+## Dependencies
+
+- [opn](https://github.com/sindresorhus/opn)
 
 ## License
 [MIT](LICENSE.txt)
