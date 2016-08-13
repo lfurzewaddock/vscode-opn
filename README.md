@@ -1,4 +1,5 @@
 # vscode-opn
+[![bitHound Code](https://www.bithound.io/github/lfurzewaddock/vscode-opn/badges/code.svg)](https://www.bithound.io/github/lfurzewaddock/vscode-opn)
 
 ![vscode-opn](public/assets/images/vscode-opn.png)
 
