@@ -1,0 +1,7 @@
+{
+	"opn.command.title": "Abrir con...",
+	"opn.perLang.desc": "Agregue en una llave de nombre `opnOptions` una lista de objetos para proveer argumentos al comando `opn` para cada lenguage.",
+	"opn.webServerProtocol.desc": "Agregue un protocolo, Ej. 'http' o 'https'",
+	"opn.webServerHostname.desc": "Agregue el hostname o IP de su servidor web local",
+	"opn.webServerPort.desc": "Agregue el puerto de su servidor web local"
+}
