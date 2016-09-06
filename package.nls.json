@@ -1,7 +1,0 @@
-{
-	"opn.command.title": "Open with...",
-	"opn.perLang.desc": "Enter with the key name `opnOptions` an array of objects to provide args to the opn command for each language",
-	"opn.webServerProtocol.desc": "Enter a protocol, e.g. 'http' or 'https'",
-	"opn.webServerHostname.desc": "Enter the hostname or IP of your local web server",
-	"opn.webServerPort.desc": "Enter the port of your local web server"
-}

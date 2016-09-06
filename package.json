@@ -46,7 +46,7 @@
     "commands": [
       {
         "command": "extension.opn",
-        "title": "%opn.command.title%"
+        "title": "Open"
       }
     ],
 		"menus": {
@@ -77,22 +77,22 @@
         "vscode-opn.perLang": {
           "type": "object",
           "default": {},
-          "description": "%opn.perLang.desc%"
+          "description": "vscode-opn 'opnOptions' array of objects to provide args to the opn command for each language"
         },
         "vscode-opn.webServerProtocol": {
           "type": "string",
           "default": "http",
-          "description": "%opn.webServerProtocol.desc%"
+          "description": "Enter a protocol, e.g. 'http' or 'https'"
         },
         "vscode-opn.webServerHostname": {
           "type": "string",
           "default": "localhost",
-          "description": "%opn.webServerHostname.desc%"
+          "description": "Enter the hostname or IP of your local web server"
         },
         "vscode-opn.webServerPort": {
           "type": "integer",
           "default": 8080,
-          "description": "%opn.webServerPort.desc%"
+          "description": "Enter the port of your local web server"
         }
       }
     }
