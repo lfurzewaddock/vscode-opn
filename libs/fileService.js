@@ -1,11 +1,22 @@
 'use strict';
 
+var fs = require('fs');
 var vscode = require('vscode');
 var opn = require('opn');
 var path = require('path');
 var url = require('url');
 
 var fileService = function fileServiceAnonFn() {
+
+
+	var normalizePath = function normalizePath(dir) {
+
+    if (process.platform === 'win32') {
+			dir = dir.replace(/\\/g, '/');
+    }
+    return dir;
+
+	};
 
   var fileLocationFsPath = function fileLocationFsPathAnonFn(activeTextEditor) {
 
@@ -37,7 +48,7 @@ var fileService = function fileServiceAnonFn() {
   var fileLocationUrl = function fileLocationUrlAnonFn(activeTextEditor, config) {
 
     var relativePath = path.relative(vscode.workspace.rootPath, activeTextEditor.document.fileName);
-    var relativeUrl = fixedEncodeURI(relativePath.replace(/\\/g, '/'));
+    var relativeUrl = fixedEncodeURI(normalizePath(relativePath));
 
     var urlObj = {
       protocol: config.webServerProtocol,
@@ -122,9 +133,22 @@ var fileService = function fileServiceAnonFn() {
 
   };
 
+	var isFile = function isFile(uri) {
+
+		if (!Object.keys(uri).length) {
+			return false;
+		}
+
+    var dir = fs.statSync(uri.fsPath.toString());
+
+		return dir.isFile();
+
+	};
+
   return {
-    openFileLocation: openFileLocation,
+		isFile: isFile,
     getFileLocation: getFileLocation,
+    openFileLocation: openFileLocation
   };
 
 };

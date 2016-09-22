@@ -1,7 +1,5 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
 var vscode = require('vscode');
 var fileService = require('./libs/fileService');
 
@@ -31,72 +29,37 @@ var openController = (function openControllerIIFE() {
   };
 
   var activeEditor = function activeEditor(editor) {
-
-		if (!editor || !editor.document.uri) {
-      vscode.window.showInformationMessage('No active editor or URI available');
-      return;
+		
+		if (editor && editor.document) {
+			openFileWithOptions(editor);
+    } else {
+			editor = { document: editor };
+			openFileWithOptions(editor);
     }
-
-		openFileWithOptions(editor);
 
 	};
 
-  var openFile = function openFile(filePath) {
+  var openFile = function openFile(uri) {
 
-		if (filePath) {
+		var editor = vscode.window.activeTextEditor;
 
-			var ext = path.extname(filePath);
-			var filename = path.basename(filePath, ext);
+		if (!editor && !fileService.isFile(uri)) {
+			vscode.window.showInformationMessage('No active editor or URI available');
+      return;
+		}
 
-			vscode.window.showTextDocument({
-				fileName: filename,
-				uri: vscode.Uri.parse('file:///' + filePath)
-			}).then(activeEditor);
-
+		if (uri && fileService.isFile(uri)) {
+			vscode.workspace.openTextDocument(uri).then(activeEditor);
 		} else {
-    	var editor = vscode.window.activeTextEditor;
 			activeEditor(editor);
 		}
+
   };
-
-	var normalizePath = function normalizePath(dir) {
-
-    if (process.platform === 'win32') {
-			dir = dir.replace(/\\/g, '/');
-    }
-    return dir;
-
-	};
-
-	var verifyFileFromPath = function verifyFileFromPath(path) {
-
-    var dir = fs.statSync(path);
-    path = normalizePath(path);
-
-    if (dir.isFile()) {
-			return path;
-    } else {
-			return null;
-		}
-
-	};
 
   var disposable = vscode.commands.registerCommand('extension.opn', function openUriAnonFn(uri) {
 
-		var same = false;
-		var filePath = null;
-		var active = vscode.window.activeTextEditor;
-
-		if (active) {
-			same = vscode.window.activeTextEditor.document.uri.fsPath === uri.fsPath;
-		}
-
-		if (uri && !same) {
-			filePath = verifyFileFromPath(uri.fsPath);
-		}		
-
     try {
-      openFile(filePath);
+      openFile(uri);
     }
     catch (error) {
       vscode.window.showInformationMessage('Error! Could not open file.');
