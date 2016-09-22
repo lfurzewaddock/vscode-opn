@@ -49,6 +49,20 @@
         "title": "Open"
       }
     ],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "extension.opn",
+					"group": "navigation"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "extension.opn",
+					"group": "navigation"
+				}
+			]
+		},
     "keybindings": [
       {
         "command": "extension.opn",
