@@ -11,6 +11,8 @@ var openController = (function openControllerIIFE() {
 
     if (config !== undefined && typeof config.perLang === 'object' && Object.keys(config.perLang).length > 0) {
 
+      var success = false;
+      var defaultOptions;
       for (var i = 0, len = config.perLang.opnOptions.length; i < len; i++) {
 
         var opnOptionObj = config.perLang.opnOptions[i];
@@ -18,10 +20,16 @@ var openController = (function openControllerIIFE() {
         if (activeTextEditor.document.languageId === opnOptionObj.forLang) {
 
           fileService.openFileLocation(fileService.getFileLocation(activeTextEditor, config, opnOptionObj), opnOptionObj);
+          success = true;
           break;
 
+        } else if (opnOptionObj.forLang === 'default') {
+          defaultOptions = opnOptionObj;
         }
 
+      }
+      if (!success) {
+        fileService.openFileLocation(fileService.getFileLocation(activeTextEditor, config, defaultOptions), defaultOptions);
       }
 
     } else {

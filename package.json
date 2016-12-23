@@ -33,7 +33,7 @@
     "url": "https://github.com/lfurzewaddock/vscode-opn"
   },
   "engines": {
-    "vscode": "^0.10.6"
+    "vscode": "^1.6.0"
   },
   "categories": [
     "Other"
@@ -43,6 +43,20 @@
   ],
   "main": "./extension",
   "contributes": {
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.opn",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "extension.opn",
+          "group": "navigation"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "extension.opn",
@@ -93,7 +107,7 @@
     "decache": "^3.0.3",
     "jscs": "^2.10.1",
     "jshint": "^2.9.1",
-    "vscode": "^0.11.0"
+    "vscode": "^1.0.5"
   },
   "license": "See LICENSE.txt"
 }
