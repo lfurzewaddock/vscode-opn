@@ -5,7 +5,7 @@ var fileService = require('./libs/fileService');
 
 var openController = (function openControllerIIFE() {
 
-  var openFileWithOptions = function openFileWithOptionsAnonFn(activeTextEditor) {
+  var openFileWithOptions = function openFileWithOptionsAnonFn(document) {
 
     var config = vscode.workspace.getConfiguration('vscode-opn');
 
@@ -17,9 +17,9 @@ var openController = (function openControllerIIFE() {
 
         var opnOptionObj = config.perLang.opnOptions[i];
 
-        if (activeTextEditor.document.languageId === opnOptionObj.forLang) {
+        if (document.languageId === opnOptionObj.forLang) {
 
-          fileService.openFileLocation(fileService.getFileLocation(activeTextEditor, config, opnOptionObj), opnOptionObj);
+          fileService.openFileLocation(fileService.getFileLocation(document, config, opnOptionObj), opnOptionObj);
           success = true;
           break;
 
@@ -29,36 +29,47 @@ var openController = (function openControllerIIFE() {
 
       }
       if (!success) {
-        fileService.openFileLocation(fileService.getFileLocation(activeTextEditor, config, defaultOptions), defaultOptions);
+        fileService.openFileLocation(fileService.getFileLocation(document, config, defaultOptions), defaultOptions);
       }
 
     } else {
 
-      fileService.openFileLocation(fileService.getFileLocation(activeTextEditor));
+      fileService.openFileLocation(fileService.getFileLocation(document));
     }
 
   };
 
-  var openFile = function openUriAnonFn() {
+  var openFile = function openUriAnonFn(uri) {
 
     var editor = vscode.window.activeTextEditor;
 
-    if (!editor || !editor.document.uri) {
+    if (!editor && !uri.fsPath) {
 
       vscode.window.showInformationMessage('No active editor or URI available');
       return;
 
+    } else {
+
+      if (uri.fsPath && editor.document.uri.fsPath !== uri.fsPath) {
+
+        vscode.workspace.openTextDocument(uri).then(function (document) {
+          openFileWithOptions(document);
+        });
+
+      } else {
+
+        openFileWithOptions(editor.document);
+
+      }
+
     }
-
-    openFileWithOptions(editor);
-
   };
 
-  var disposable = vscode.commands.registerCommand('extension.opn', function openUriAnonFn() {
+  var disposable = vscode.commands.registerCommand('extension.opn', function openUriAnonFn(uri) {
 
     try {
 
-      openFile();
+      openFile(uri);
 
     }
     catch (error) {

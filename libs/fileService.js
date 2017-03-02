@@ -7,9 +7,9 @@ var url = require('url');
 
 var fileService = function fileServiceAnonFn() {
 
-  var fileLocationFsPath = function fileLocationFsPathAnonFn(activeTextEditor) {
+  var fileLocationFsPath = function fileLocationFsPathAnonFn(document) {
 
-    return activeTextEditor.document.uri.fsPath.toString();
+    return document.uri.fsPath.toString();
 
   };
 
@@ -19,24 +19,24 @@ var fileService = function fileServiceAnonFn() {
 
   };
 
-  var fileLocationUri = function fileLocationUriAnonFn(activeTextEditor) {
+  var fileLocationUri = function fileLocationUriAnonFn(document) {
 
     // Bug workaround: https://github.com/Microsoft/vscode/issues/2990
-    if (activeTextEditor.document.uri.scheme.toString() === 'file') {
+    if (document.uri.scheme.toString() === 'file') {
 
-      return 'file://' + fixedEncodeURI(activeTextEditor.document.uri.path.toString());
+      return 'file://' + fixedEncodeURI(document.uri.path.toString());
 
     } else {
 
-      return activeTextEditor.document.uri.toString();
+      return document.uri.toString();
 
     }
 
   };
 
-  var fileLocationUrl = function fileLocationUrlAnonFn(activeTextEditor, config) {
+  var fileLocationUrl = function fileLocationUrlAnonFn(document, config) {
 
-    var relativePath = path.relative(vscode.workspace.rootPath, activeTextEditor.document.fileName);
+    var relativePath = path.relative(vscode.workspace.rootPath, document.fileName);
     var relativeUrl = fixedEncodeURI(relativePath.replace(/\\/g, '/'));
 
     var urlObj = {
@@ -50,23 +50,23 @@ var fileService = function fileServiceAnonFn() {
 
   };
 
-  var getFileLocation = function getFileLocationAnonFn(activeTextEditor, config, opnOptionObj) {
+  var getFileLocation = function getFileLocationAnonFn(document, config, opnOptionObj) {
 
     if (opnOptionObj === undefined) {
 
-      return fileLocationUri(activeTextEditor);
+      return fileLocationUri(document);
 
     } else if (opnOptionObj.isUseWebServer) {
 
-      return fileLocationUrl(activeTextEditor, config);
+      return fileLocationUrl(document, config);
 
     } else if (opnOptionObj.isUseFsPath) {
 
-      return fileLocationFsPath(activeTextEditor);
+      return fileLocationFsPath(document);
 
     } else {
 
-      return fileLocationUri(activeTextEditor);
+      return fileLocationUri(document);
     }
 
   };
