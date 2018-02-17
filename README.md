@@ -1,5 +1,6 @@
 # vscode-opn
 [![bitHound Code](https://www.bithound.io/github/lfurzewaddock/vscode-opn/badges/code.svg)](https://www.bithound.io/github/lfurzewaddock/vscode-opn)
+[![Known Vulnerabilities](https://snyk.io/test/github/lfurzewaddock/vscode-opn/badge.svg?targetFile=package.json)](https://snyk.io/test/github/lfurzewaddock/vscode-opn?targetFile=package.json)
 
 ![vscode-opn](public/assets/images/vscode-opn.png)
 
