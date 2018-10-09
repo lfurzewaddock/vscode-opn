@@ -41,7 +41,7 @@
   "activationEvents": [
     "*"
   ],
-  "main": "./extension",
+  "main": "./lib",
   "contributes": {
     "commands": [
       {
@@ -83,7 +83,9 @@
       }
     }
   },
-  "scripts": {},
+  "scripts": {
+    "publish": "./node_modules/.bin/babel src --out-dir lib"
+  },
   "dependencies": {
     "opn": "^4.0.0"
   },

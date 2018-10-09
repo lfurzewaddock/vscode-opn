@@ -1,7 +1,7 @@
 "use strict";
 
 var vscode = require("vscode");
-var fileService = require("./libs/fileService");
+var fileService = require("./file-service");
 
 var openController = (function openControllerIIFE() {
   var openFileWithOptions = function openFileWithOptionsAnonFn(activeTextEditor) {
