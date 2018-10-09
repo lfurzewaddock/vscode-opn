@@ -1,9 +1,5 @@
 .vscode/**
 test/**
 typings/**
-.jscsrc
-.jshintrc
 .gitignore
-jsconfig.json
-vsc-extension-quickstart.md
 public/assets/images/*.psd

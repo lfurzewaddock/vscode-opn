@@ -1,0 +1,16 @@
+{
+  "extends": "eslint-config-airbnb-es5",
+  "env": {
+    "browser": false,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 5,
+    "sourceType": "script"
+  },
+  "rules": {
+    "quotes": ["error", "double"],
+    "prefer-arrow-callback": [ "error", { "allowNamedFunctions": true } ],
+    "comma-dangle": ["error", "never"]
+  }
+}
